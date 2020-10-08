@@ -16,6 +16,6 @@ public class GcdFiveteen {
 			else
 				secondNumber = secondNumber % firstNumber;
 		}
-		System.out.println("мнд = " + (firstNumber + secondNumber));
+		System.out.println("GCD = " + (firstNumber + secondNumber));
 	}
 }
