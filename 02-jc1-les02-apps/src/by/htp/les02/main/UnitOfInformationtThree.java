@@ -16,7 +16,7 @@ public class UnitOfInformationtThree {
 			long remainderOfKb = numberOfBt % bytePackageSize;
 			if (numberOfKb >= bytePackageSize) {
 				long numberOfMb = numberOfKb / bytePackageSize;
-				long remainderOfMb = numberOfKb % 1024;
+				long remainderOfMb = numberOfKb % bytePackageSize;
 				if (numberOfMb >= bytePackageSize) {
 					long numberOfGb = numberOfMb / bytePackageSize;
 					long remainderOfGb = numberOfGb % bytePackageSize;
