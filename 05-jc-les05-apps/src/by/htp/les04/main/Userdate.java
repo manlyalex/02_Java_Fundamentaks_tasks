@@ -1,6 +1,6 @@
 package by.htp.les04.main;
 
-public class Test {
+public class UserData {
     public static void main(String[] args) {
         Customer customer1 = new Customer("Aliaksei", "Bamanouski", "Sergeevich",
                 "Gerasimenko", 3333, 1, "223344");
