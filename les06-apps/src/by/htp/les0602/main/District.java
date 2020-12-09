@@ -26,6 +26,21 @@ public class District {
     public void setCities(List<City> cities) {
         this.cities = cities;
     }
+    
+        @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        District district = (District) o;
+        return Objects.equals(districtCenter, district.districtCenter) &&
+                Objects.equals(cities, district.cities);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(districtCenter, cities);
+    }
+
 
     @Override
     public String toString() {
