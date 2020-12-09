@@ -42,7 +42,23 @@ public class BankAccount implements Comparable<BankAccount> {
     public void setMoneyInTheAccount(double moneyInTheAccount) {
         this.moneyInTheAccount = moneyInTheAccount;
     }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BankAccount that = (BankAccount) o;
+        return Double.compare(that.moneyInTheAccount, moneyInTheAccount) == 0 &&
+                isBlocked == that.isBlocked &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(accountNumber, that.accountNumber);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, accountNumber, moneyInTheAccount, isBlocked);
+    }
+    
     @Override
     public String toString() {
         String blockedStatus = isBlocked ? " - blocked " : "";
