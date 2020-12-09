@@ -51,6 +51,22 @@ public class Land {
 
         return this.states.size();
     }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Land land = (Land) o;
+        return Double.compare(land.area, area) == 0 &&
+                Objects.equals(name, land.name) &&
+                Objects.equals(capital, land.capital) &&
+                Objects.equals(states, land.states);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, area, capital, states);
+    }
 
     @Override
     public String toString() {
