@@ -22,9 +22,11 @@ public class ProductParser {
         for (String fileLine : fileLines) {
             try {
                 products.add(ProductParser.parseProduct(fileLine));
+
             } catch (Throwable t) {
             }
         }
+        System.out.println(products);
         return products;
     }
 
@@ -48,5 +50,6 @@ public class ProductParser {
 
         return applianceProduct;
     }
+
 
 }

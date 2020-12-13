@@ -8,8 +8,6 @@ import by.htp.les22.service.ApplianceService;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-
 public class ApplianceServiceImpl implements ApplianceService {
 
     @Override
@@ -27,7 +25,7 @@ public class ApplianceServiceImpl implements ApplianceService {
 
 
     @Override
-    public List<ApplianceProductLaptop> find(String key, String value) {
+    public List<ApplianceProductLaptop> find(String key, String value) throws ServiceException {
         DaoProvider provider = DaoProvider.getInstance();
         ApplianceDao applianceDao = provider.getApplianceDao();
         List<ApplianceProductLaptop> results = new ArrayList<ApplianceProductLaptop>();
@@ -41,7 +39,13 @@ public class ApplianceServiceImpl implements ApplianceService {
     }
 
     @Override
-    public void save(String type, Map<Object, Object> params) {
-
+    public void save(ApplianceProductLaptop applianceProductLaptop, String filePath) throws ServiceException {
+        DaoProvider provider = DaoProvider.getInstance();
+        ApplianceDao applianceDao = provider.getApplianceDao();
+        try {
+            applianceDao.save(applianceProductLaptop, filePath);
+        } catch (DaoException e) {
+            e.printStackTrace();
+        }
     }
 }

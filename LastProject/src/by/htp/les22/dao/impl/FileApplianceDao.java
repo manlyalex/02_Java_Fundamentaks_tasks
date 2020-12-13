@@ -3,12 +3,9 @@ package by.htp.les22.dao.impl;
 import by.htp.les22.dao.ApplianceDao;
 import by.htp.les22.entity.ex.ApplianceProductLaptop;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Function;
 
 public class FileApplianceDao implements ApplianceDao {
@@ -52,15 +49,13 @@ public class FileApplianceDao implements ApplianceDao {
     }
 
 
-
-
     @Override
     public List<ApplianceProductLaptop> filter(String key, String value) throws DaoException {
         List<ApplianceProductLaptop> results = null;
         String path = "E:\\Courses-Java\\IDEA\\Last_Project\\resourses\\appliances.txt";
         try {
             applianceProductLaptops = ProductParser.parseProductTxt(path);
-            results = this.filterByKeyValue(key,value);
+            results = this.filterByKeyValue(key, value);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -74,7 +69,17 @@ public class FileApplianceDao implements ApplianceDao {
     }
 
     @Override
-    public void save(String type, Map<Object, Object> params) { // Метод для сохранения электроприбора в файл
-
+    public void save(ApplianceProductLaptop applianceProductLaptop, String filePath) throws DaoException { // Метод для сохранения электроприбора в файл
+        FileWriter fw = null;
+        try {
+            fw = new FileWriter(filePath, true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.newLine();
+            bw.write(applianceProductLaptop.fromObjectToString());
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 }

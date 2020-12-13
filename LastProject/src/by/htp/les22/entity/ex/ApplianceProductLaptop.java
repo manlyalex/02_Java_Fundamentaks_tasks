@@ -2,6 +2,8 @@ package by.htp.les22.entity.ex;
 
 import by.htp.les22.entity.ApplianceProduct;
 
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Objects;
 
 
@@ -101,6 +103,7 @@ public class ApplianceProductLaptop extends ApplianceProduct {
     public int hashCode() {
         return Objects.hash(name, batteryCapacity, OS, memoryRom, systemMemory, CPU, displayInches);
     }
+
     public boolean isExist(String key, String value) {
         switch (key) {
             case "CPU":
@@ -126,6 +129,15 @@ public class ApplianceProductLaptop extends ApplianceProduct {
                 this.getNameProduct(), this.getBatteryCapacity(),
                 this.getOS(), this.getMemoryRom(), this.getSystemMemory(),
                 this.getCPU(), this.getDisplayInches());
+    }
+
+    public String fromObjectToString() {
+        NumberFormat numberFormatter;
+        numberFormatter = NumberFormat.getNumberInstance(Locale.US);
+        return String.format("%s : BATTERY_CAPACITY=%s, OS=%s, MEMORY_ROM=%d, SYSTEM_MEMORY=%d, CPU=%s, DISPLAY_INCHS=%d",
+                this.getNameProduct(), numberFormatter.format(this.getBatteryCapacity()),
+                this.getOS(), this.getMemoryRom(), this.getSystemMemory(),
+                numberFormatter.format(this.getCPU()), this.getDisplayInches());
     }
 
 }

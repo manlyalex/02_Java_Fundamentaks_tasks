@@ -12,5 +12,5 @@ public interface ApplianceService {
 
     List<ApplianceProductLaptop> find(String key, String value) throws ServiceException;//название параметра, значение параметра
 
-    void save(String type, Map<Object, Object> params) throws ServiceException;//сохранение нового электроприбора (параметры для его сохранения)
+    void save(ApplianceProductLaptop applianceProductLaptop, String filePath) throws ServiceException;//сохранение нового электроприбора (параметры для его сохранения)
 }

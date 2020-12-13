@@ -12,6 +12,6 @@ public interface ApplianceDao {
 
     List<ApplianceProductLaptop> filter(String key, String value) throws DaoException; //название параметра, значение параметра
 
-    void save(String type, Map<Object, Object> params) throws DaoException; //сохранение нового электроприбора (параметры для его сохранения)
+    void save(ApplianceProductLaptop applianceProductLaptop, String filePath) throws DaoException; //сохранение нового электроприбора (параметры для его сохранения)
 
 }
